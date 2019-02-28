@@ -1,0 +1,55 @@
+li {
+    list-style-type: none;
+}
+ body { 
+    font-family: Roboto, Arial, sans-serif;
+    margin: 0;
+ }
+ .feed-card{
+ }
+ .actions p {
+    display: inline;
+ }
+
+ .actions {
+    width: 600px;
+    padding-left: 60px;
+ }
+.profilePic {
+    height: 128px;
+    width: 128px;
+}
+
+.editor {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.addAnswer {
+    padding-bottom: 5px;
+}
+
+textarea {
+    width: 100%;
+    height: 70px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    background-color: #eff2f7;
+}
+
+a {
+    color: green;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+h2 a:hover {
+    color: red;
+  }

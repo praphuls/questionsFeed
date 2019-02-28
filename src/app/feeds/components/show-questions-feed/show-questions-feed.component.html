@@ -1,0 +1,78 @@
+<div class="container">
+  <ul>
+    <li *ngFor="let question of this.questions; index as ii">
+      <mat-card class="feed-card">
+        <mat-card-header (click)="questionClicked(question)">
+          <mat-card-title>
+            <h2><a routerLink="/ques/{{question.Id.toString().split('-')[1]}}">Question {{question.Id.toString().split('-')[1]}}</a></h2>
+          </mat-card-title>
+          <mat-card-subtitle class="feed-subTitle">
+            UpVotes: {{ 
+              (question.upvotes === undefined || question.upvotes === null ) ? 0 : question.upvotes 
+            }} 
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            DownVotes: {{ 
+              (question.downvotes === undefined || question.downvotes === null) ? 0 : question.downvotes 
+            }}
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+              <h3> {{ question.Text }}</h3>
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <!-- Answers Begin -->
+          <mat-card-content>
+            <ul>
+              <li *ngFor="let answer of this.answers | questionFilter :question.Id :this.answers; index as i">
+                  <mat-card-title>
+                      <h3>Answer {{i+1}}</h3>
+                    </mat-card-title>
+                  <img class="profilePic" src={{getProfileImage(answer)}}>
+                  <mat-card-header>
+                    <mat-card-subtitle class="feed-subTitle">
+                      Up Votes: {{ 
+                        (answer.upvotes === undefined || answer.upvotes === null ) ? 0 : answer.upvotes 
+                      }} 
+                    </mat-card-subtitle>
+                    <mat-card-subtitle>
+                      Down Votes: {{ 
+                        (answer.downvotes === undefined || answer.downvotes === null) ? 0 : answer.downvotes 
+                      }}
+                    </mat-card-subtitle>
+                    <mat-card-subtitle>
+                        Created By: {{ 
+                          getName(answer)
+                        }}
+                    </mat-card-subtitle>
+                    <mat-card-subtitle>
+                        Created At: {{ answer.created_at }}
+                    </mat-card-subtitle>
+                    <mat-card-subtitle>
+                        <h4> {{ answer.Answer }}</h4>
+                    </mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-footer>
+                    <mat-card-actions class="actions">
+                        <p><button 
+                        (click)="onUpVote(answer)">UpVote</button></p>
+                        <p><button
+                        (click)="onDownVote(answer)">DownVote</button></p>
+                      </mat-card-actions>
+                  </mat-card-footer>
+              </li>
+            </ul>
+          </mat-card-content>
+        <!-- Answers End -->
+
+        <mat-card-footer>
+        </mat-card-footer>
+        <mat-card-actions class="actions">
+          </mat-card-actions>
+      </mat-card>
+      <mat-divider></mat-divider>
+    </li>
+  </ul>
+  
+</div>
+
